@@ -36,9 +36,33 @@ abbr -a -- gpu 'git push'
 abbr -a -- gpuf 'git push --force'
 
 abbr -a -- bru 'brew update && brew upgrade'
-abbr -a -- update-all 'brew update && brew upgrade && brew cleanup; fisher update;'
-abbr -a -- update-fish 'pushd . && cd ~/.config/fish && git reset --hard && git pull && popd'
-abbr -a -- update-nvim 'pushd . && cd ~/.config/nvim && git reset --hard && git pull && popd'
-abbr -a -- update-tmux 'pushd . && cd ~/.config/tmux && git reset --hard && git pull && popd'
+
+function update-all
+    update-brew
+    update-fish
+    update-fish-plugins
+    update-nvim
+    update-tmux
+end
+
+function update-brew
+    brew update && brew upgrade && brew cleanup
+end
+
+function update-fish
+    pushd . && cd ~/.config/fish && git reset --hard && git pull && popd
+end
+
+function update-fish-plugins
+    fisher update
+end
+
+function update-nvim
+    pushd . && cd ~/.config/nvim && git reset --hard && git pull && popd
+end
+
+function update-tmux
+    pushd . && cd ~/.config/tmux && git reset --hard && git pull && popd
+end
 
 set -gx GPG_TTY $(tty)
