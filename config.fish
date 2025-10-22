@@ -39,6 +39,7 @@ abbr -a -- bru 'brew update && brew upgrade'
 
 function update-all
     update-brew
+    update-mise
     update-fish
     update-fish-plugins
     update-nvim
@@ -47,6 +48,10 @@ end
 
 function update-brew
     brew update && brew upgrade && brew cleanup
+end
+
+function update-mise
+    mise upgrade
 end
 
 function update-fish
@@ -66,3 +71,4 @@ function update-tmux
 end
 
 set -gx GPG_TTY $(tty)
+/Users/johan/.local/bin/mise activate fish | source
