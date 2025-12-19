@@ -40,10 +40,7 @@ abbr -a -- bru 'brew update && brew upgrade'
 function update-all
     update-brew
     update-mise
-    update-fish
     update-fish-plugins
-    update-nvim
-    update-tmux
 end
 
 function update-brew
@@ -54,20 +51,8 @@ function update-mise
     mise upgrade
 end
 
-function update-fish
-    pushd . && cd ~/.config/fish && git reset --hard && git pull && popd
-end
-
 function update-fish-plugins
     fisher update
-end
-
-function update-nvim
-    pushd . && cd ~/.config/nvim && git reset --hard && git pull && popd
-end
-
-function update-tmux
-    pushd . && cd ~/.config/tmux && git reset --hard && git pull && popd
 end
 
 set -gx GPG_TTY $(tty)
